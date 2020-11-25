@@ -19,6 +19,7 @@
 </template>
 
 <script>
+    import {selectUserStaions} from "../../service/api"
     export default {
         data: function(){
             return {
@@ -38,6 +39,23 @@
         },
         methods: {
             submitForm(formName) {
+
+                debugger;
+                selectUserStaions().then(res => {
+                    debugger;
+                    if(res){
+                        if (res.length == 1) {
+                            commit('SET_JOBCODELIST', res[0].stationCode)
+                        } else {
+                            res.forEach((item, index) => {
+                                commit('SET_JOBCODELIST', item.stationCode)
+                            })
+                        }
+                        console.log('jobcodelist11111111', state.jobCodeList)
+                    }
+                })
+
+
                 const self = this;
                 self.$refs[formName].validate((valid) => {
                     if (valid) {

@@ -1,6 +1,6 @@
 <template>
     <div class="table">
-        <div class="crumbs">
+     <!--   <div class="crumbs">
             <el-breadcrumb separator="/">
                 <el-breadcrumb-item><i class="el-icon-menu"></i> 表格</el-breadcrumb-item>
                 <el-breadcrumb-item>基础表格</el-breadcrumb-item>
@@ -38,7 +38,7 @@
                     layout="prev, pager, next"
                     :total="1000">
             </el-pagination>
-        </div>
+        </div>-->
     </div>
 </template>
 
@@ -71,7 +71,7 @@
                         }
                     }
                     if(!is_del){
-                        if(d.address.indexOf(self.select_cate) > -1 && 
+                        if(d.address.indexOf(self.select_cate) > -1 &&
                             (d.name.indexOf(self.select_word) > -1 ||
                             d.address.indexOf(self.select_word) > -1)
                         ){
@@ -128,7 +128,7 @@
     }
 </script>
 
-<style scoped>
+<style >
 .handle-box{
     margin-bottom: 20px;
 }
