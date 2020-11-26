@@ -105,7 +105,7 @@ export async function selectAllStaions(params,mock) {
 
 //获取登录人岗位信息
 export async function selectUserStaions(params,mock) {
-  return request('uAuth/selectUserStaions',{
+  return request('user/longin',{
     mock:mock ? mock : false,
     body:{
       data:params
