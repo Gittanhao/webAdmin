@@ -40,17 +40,12 @@ export default {
     },
     methods: {
         submitForm(formName) {
-            fetch('http://192.168.0.104:80/user/longin', {
-                method: 'post',
-                body: JSON.stringify({name: this.ruleForm.name}),
-                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            }).then((res) => {
-                return res.text()
-            }).then((data) => {
-                console.log(data)
-                if (JSON.parse(data).code != "200") {
+            let self = this;
+            self.$axios.post('/user/longin', {name: this.ruleForm.name}).then((res) => {
+                console.log(res.data);
+                if (res.data.code != "200") {
                     this.$message({
-                        message: JSON.parse(data).msg,
+                        message: res.data.msg,
                         type: 'error'
                     })
                 } else {
@@ -66,6 +61,32 @@ export default {
                     });
                 }
             })
+            // fetch('http://172.16.8.18:80/user/longin', {
+            //     method: 'post',
+            //     body: JSON.stringify({name: this.ruleForm.name}),
+            //     headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            // }).then((res) => {
+            //     return res.text()
+            // }).then((data) => {
+            //     console.log(data)
+            //     if (JSON.parse(data).code != "200") {
+            //         this.$message({
+            //             message: JSON.parse(data).msg,
+            //             type: 'error'
+            //         })
+            //     } else {
+            //         const self = this;
+            //         self.$refs[formName].validate((valid) => {
+            //             if (valid) {
+            //                 localStorage.setItem('ms_username', self.ruleForm.name);
+            //                 self.$router.push('/readme');
+            //             } else {
+            //                 console.log('error submit!!');
+            //                 return false;
+            //             }
+            //         });
+            //     }
+            // })
         }
     }
 }

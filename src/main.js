@@ -8,7 +8,11 @@ import 'element-ui/lib/theme-chalk/index.css' // 默认主题
 import "babel-polyfill";
 
 Vue.use(ElementUI);
-Vue.prototype.$axios = axios;
+const instance = axios.create({
+    baseURL: 'http://172.16.8.18:80',
+    timeout: 10000
+});
+Vue.prototype.$axios = instance;
 new Vue({
     router,
     render: h => h(App)
